@@ -46,6 +46,7 @@
     ]
   },
   "devDependencies": {
+    "cypress-mochawesome-reporter": "^3.6.1",
     "gh-pages": "^4.0.0"
   }
 }

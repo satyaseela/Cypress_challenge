@@ -2,6 +2,7 @@ import { defineConfig } from "cypress";
 
 
 export default defineConfig({
+  reporter: 'cypress-mochawesome-reporter',
   defaultCommandTimeout: 10000,
   pageLoadTimeout: 70000,
   env: {
@@ -9,6 +10,8 @@ export default defineConfig({
   },
   e2e: {
     setupNodeEvents(on, config) {
+      //screenshotOnRunFailure = true;
+     require('cypress-mochawesome-reporter/plugin')(on);
 
       // implement node event lis
     }
