@@ -35,28 +35,36 @@ function mockLocation(latitude, longitude) {
 }
   it('Geo Location Test', () => {
     cy.visit(Cypress.env('url'), mockLocation(40.7127281,-74.0060152)), //Giving Mocklocation coordinates
-    elementsPage.accessMocklocation(),
-    elementsPage.mockCityName(),
-    elementsPage.mocklocationWeather(),
-    elementsPage.mocklocationWeatherValue(),
+    elementsPage.getAccessMocklocation(),
+    elementsPage.getMockCityName(),
+    elementsPage.getMocklocationWeather(),
+    elementsPage.getMocklocationWeatherValue(),
     //cy.wait(1000);  
     cy.screenshot('Mock location')
   }),
   it("Add new geographical locations", () => {
     cy.visit(Cypress.env('url')),
-    elementsPage.settingsElement(),
-    elementsPage.addNewlocation(),
-    elementsPage.chnageToImerial(),
-    elementsPage.backToDashboardElementclick(),
+    elementsPage.getSettingsElement(),
+    elementsPage.getAddNewlocation(),
+    elementsPage.getChnageToImerial(),
+    elementsPage.getBackToDashboardElementclick(),
     cy.wait(4000),
     cy.screenshot('Add location')
   })
-  it("Remove a geographical location and Metrics Change to Imperial", ()=>{
+  it("Remove a geographical location ", ()=>{
     cy.visit(Cypress.env('url')),
-    elementsPage.settingsElement(),
-    elementsPage.deleteCitynameVerify(),
-    elementsPage.deleteCity()
-})
+    elementsPage.getSettingsElement(),
+    elementsPage.getChnageToImerial(),
+    elementsPage.getDeleteCitynameVerify(),
+    elementsPage.getDeleteCity()
+  })
+  it("Metrics Change to Imperial", () => {
+    cy.visit(Cypress.env('url')+"/Settings/");
+    elementsPage.getChnageToImerial(),
+    elementsPage.getBackToDashboardElementclick(),
+    cy.wait(4000),
+    cy.screenshot('Metrics to Imperial')
+  })
 })
 
 //Rome
