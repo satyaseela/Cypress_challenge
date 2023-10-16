@@ -52,5 +52,8 @@ class elementsPage {
           cy.log("Delete city name from the list is: " + text);
          });
     }
+    getWaitforCurrentlocation(){
+      cy.get(':nth-child(1) > [data-testid="weather-card"] > .card').should('be.visible');
+    }
   }
   export default new elementsPage();

@@ -46,7 +46,9 @@
     ]
   },
   "devDependencies": {
+    "cypress-browser-permissions": "^1.1.0",
     "cypress-mochawesome-reporter": "^3.6.1",
+    "cypress-visit-with-custom-geolocation": "^1.0.4",
     "gh-pages": "^4.0.0"
   }
 }

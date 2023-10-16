@@ -48,7 +48,7 @@ function mockLocation(latitude, longitude) {
     elementsPage.getAddNewlocation(),
     elementsPage.getChnageToImerial(),
     elementsPage.getBackToDashboardElementclick(),
-    cy.wait(4000),
+    elementsPage.getWaitforCurrentlocation(),
     cy.screenshot('Add location')
   })
   it("Remove a geographical location ", ()=>{
@@ -62,7 +62,7 @@ function mockLocation(latitude, longitude) {
     cy.visit(Cypress.env('url')+"/Settings/");
     elementsPage.getChnageToImerial(),
     elementsPage.getBackToDashboardElementclick(),
-    cy.wait(4000),
+    elementsPage.getWaitforCurrentlocation(),
     cy.screenshot('Metrics to Imperial')
   })
 })
