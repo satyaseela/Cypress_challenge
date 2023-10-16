@@ -1,6 +1,6 @@
 //API testing, write a regression suite with validations for 3-4 cities.
 describe('Weather Forecast API Test Regression Test', () => {
-    it('Should get weather data for 3 cities', () => {
+    it('Should get weather data for 4 cities', () => {
       const cities = ['Cairo', 'Masco', 'Delhi', 'Oslo' ];
       const apiKey = '300532edc3ad967d8a7995da10cb7d9d'; // Replace with your OpenWeatherMap API key
       cities.forEach((city) => {
@@ -31,5 +31,30 @@ describe('Weather Forecast API Test Regression Test', () => {
           
         });
       });
-    });
-  });
+  it.only('Handles Unexpected API Response', () => {
+        const city = 'Cairo';
+        const apiKey = '300532edc3ad967d8a7995da10cb7d9d';
+          // Mock the location API response with an unexpected or invalid payload
+          cy.intercept('GET', `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`,
+           {
+            statusCode: 500, // Simulate a server error
+            body: 'Invalid location data', // Unexpected response data
+          }).as('locationRequest');
+      
+          // Visit the page or perform the action that mocks the location
+          cy.visit('http://localhost:3000/weather'); // Replace with the actual app URL
+      
+          // Ensure that the app handles the unexpected response appropriately
+          cy.wait('@locationRequest').then((interception) => {
+            // Assert that the app displays an error message or handles the error as expected
+            expect(interception.response.statusCode).to.equal(500); // Check for the expected status code
+            expect(interception.response.body).to.include('Invalid location data'); // Check for the expected error message
+            // Add additional assertions as needed
+          });
+      
+          // You can also test other parts of the application to ensure it remains functional after the error
+        });
+      });
+      
+    })
+ 

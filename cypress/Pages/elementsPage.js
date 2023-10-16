@@ -1,5 +1,6 @@
 class elementsPage {
-    settingsElement() {
+   
+  settingsElement() {
       cy.get(".mt-5 > a")
         .should("be.visible")
         .click();

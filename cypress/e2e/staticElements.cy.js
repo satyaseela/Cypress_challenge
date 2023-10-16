@@ -21,6 +21,22 @@ describe("Weather Forcast Testsuit ", () => {
     staticElementsPage.imperialElement();
   });
 
+  it("Verify the static elements negative tests in Dashboard page", ()=>{
+    cy.visit(Cypress.env('url'));
+    cy.get('.title').should('eq','Settings');
+    
+  });
+  it("Verify the static elements negative tests in settings page", ()=>{
+    cy.visit(Cypress.env('url')+"/Settings/");
+    cy.get('.has-text-centered > .title').should("be.visible").and('have.text','Back to Dashboard');
+  })
+
+it("Verify city field negative test" , ()=>{
+  cy.visit(Cypress.env('url'));
+  cy.get(':nth-child(3) > [data-testid="weather-card"]').should("be.visible").and('have.text','Berlin');
+})
+
+//mock location
 function mockLocation(latitude, longitude) {
   return {
     onBeforeLoad(win) {
@@ -33,34 +49,44 @@ function mockLocation(latitude, longitude) {
     } 
   };
 }
-  it('Geo Location Test', () => {
+
+
+it('Geo Location Test', () => {
     cy.visit(Cypress.env('url'), mockLocation(60.1674881,24.9427473)),
-    cy.get(':nth-child(1) > [data-testid="weather-card"] > .card',).click(),
+    cy.get(':nth-child(1) > [data-testid="weather-card"] > .card').click(),
     elementsPage.mockCityName(),
     elementsPage.cloudElement(),
     elementsPage.cloudValueElement(),
-    //cy.wait(1000);
     cy.screenshot()
-  }),
-  it("Add new geographical locations", () => {
+  })
+
+it('Geo Location Negative Test' , () => {
+    cy.visit(Cypress.env('url'), mockLocation(41.8933203,12.4829321)),
+    cy.get(':nth-child(1) > [data-testid="weather-card"]')
+    .should("be.visible")
+    .and('have.text','Berlin');;
+        }); 
+ })
+  
+ it("Add new geographical locations", () => {
     cy.visit(Cypress.env('url')),
-    elementsPage.settingsElement(),
+    elementsPage.settingsElement()//.click(),
       cy.window().then(function(p){
         cy.stub(p, "prompt").returns("Delhi");
         cy.get(':nth-child(1) > :nth-child(3) > .button').click()
       })
     cy.get('.has-text-centered > a').click()
   })
+
   it("Remove a geographical location", ()=>{
     cy.visit(Cypress.env('url')),
     elementsPage.settingsElement(),
     cy.get('.buttons > :nth-child(2)').click(),
     cy.get('.has-text-centered > a').click(),
     elementsPage.backToDashboardElementclick(),
-    //elementsPage.settingsElement(),
-    elementsPage.deletecLocation() // Deleting a city from the list
+    elementsPage.deletecLocation() 
 })
-})
+
 
 //Rome
 //41.8933203,12.4829321
