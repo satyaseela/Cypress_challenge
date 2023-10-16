@@ -15,7 +15,7 @@ class elementsPage {
           cy.log("Mock Location Name is " + text);
         });
     }
-    cloudElement() {
+    mocklocationWeather() {
       cy.get('.is-size-3').should("be.visible")
         .invoke("text")
         .then((text) => {
@@ -34,17 +34,23 @@ class elementsPage {
     accessMocklocation(){
       cy.get(':nth-child(1) > [data-testid="weather-card"] > .card',).click()
     }
-    cloudValueElement() {
+    mocklocationWeatherValue() {
       cy.get('.is-size-1')
         .invoke("text")
         .then((text) => {
           cy.log("Temeprature is: " +  text);
          });
     }
-    deletecLocation(){
-      cy.get(':nth-child(1) > div > .delete').click();
-      cy.get('.buttons > :nth-child(1)').click();
+    deleteCity(){
+      cy.get(':nth-child(2) > div > .delete').click();
       cy.get('.has-text-centered > a').click();
+    }
+    deleteCitynameVerify() {
+      cy.get(':nth-child(1) > :nth-child(3) > :nth-child(2)').should("be.visible")
+        .invoke("text")
+        .then((text) => {
+          cy.log("Delete city name from the list is: " + text);
+         });
     }
   }
   export default new elementsPage();

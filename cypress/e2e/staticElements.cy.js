@@ -34,25 +34,28 @@ function mockLocation(latitude, longitude) {
   };
 }
   it('Geo Location Test', () => {
-    cy.visit(Cypress.env('url'), mockLocation(40.7127281,-74.0060152)),
+    cy.visit(Cypress.env('url'), mockLocation(40.7127281,-74.0060152)), //Giving Mocklocation coordinates
     elementsPage.accessMocklocation(),
     elementsPage.mockCityName(),
-    elementsPage.cloudElement(),
-    elementsPage.cloudValueElement(),
-    //cy.wait(1000);
-    cy.screenshot()
+    elementsPage.mocklocationWeather(),
+    elementsPage.mocklocationWeatherValue(),
+    //cy.wait(1000);  
+    cy.screenshot('Mock location')
   }),
   it("Add new geographical locations", () => {
     cy.visit(Cypress.env('url')),
     elementsPage.settingsElement(),
     elementsPage.addNewlocation(),
-    cy.get('.has-text-centered > a').click()
+    elementsPage.chnageToImerial(),
+    elementsPage.backToDashboardElementclick(),
+    cy.wait(4000),
+    cy.screenshot('Add location')
   })
   it("Remove a geographical location and Metrics Change to Imperial", ()=>{
     cy.visit(Cypress.env('url')),
     elementsPage.settingsElement(),
-    elementsPage.chnageToImerial(),
-    elementsPage.deletecLocation() // Deleting a city from the list
+    elementsPage.deleteCitynameVerify(),
+    elementsPage.deleteCity()
 })
 })
 
