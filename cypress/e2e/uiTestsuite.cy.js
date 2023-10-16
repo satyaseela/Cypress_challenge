@@ -8,7 +8,7 @@ describe("Weather Forcast Testsuit ", () => {
     staticElementsPage.verifyDashboard();
     staticElementsPage.verifySettings();
   }),
-  it("Verifys static elements in Satings page", () => {
+  it("Verifys static elements in Setings page", () => {
     cy.visit(Cypress.env('url')+"/Settings/");
     staticElementsPage.verifySettingsElement2();
     staticElementsPage.verifyBackToDashboard();
@@ -49,6 +49,7 @@ function mockLocation(latitude, longitude) {
     } 
   };
 }
+<<<<<<< HEAD:cypress/e2e/staticElements.cy.js
 
 
 it('Geo Location Test', () => {
@@ -85,6 +86,40 @@ it('Geo Location Negative Test' , () => {
     cy.get('.has-text-centered > a').click(),
     elementsPage.backToDashboardElementclick(),
     elementsPage.deletecLocation() 
+=======
+  it('Geo Location Test', () => {
+    cy.visit(Cypress.env('url'), mockLocation(40.7127281,-74.0060152)), //Giving Mocklocation coordinates
+    elementsPage.getAccessMocklocation(),
+    elementsPage.getMockCityName(),
+    elementsPage.getMocklocationWeather(),
+    elementsPage.getMocklocationWeatherValue(),
+    //cy.wait(1000);  
+    cy.screenshot('Mock location')
+  }),
+  it("Add new geographical locations", () => {
+    cy.visit(Cypress.env('url')),
+    elementsPage.getSettingsElement(),
+    elementsPage.getAddNewlocation(),
+    elementsPage.getChnageToImerial(),
+    elementsPage.getBackToDashboardElementclick(),
+    elementsPage.getWaitforCurrentlocation(),
+    cy.screenshot('Add location')
+  })
+  it("Remove a geographical location ", ()=>{
+    cy.visit(Cypress.env('url')),
+    elementsPage.getSettingsElement(),
+    elementsPage.getChnageToImerial(),
+    elementsPage.getDeleteCitynameVerify(),
+    elementsPage.getDeleteCity()
+  })
+  it("Metrics Change to Imperial", () => {
+    cy.visit(Cypress.env('url')+"/Settings/");
+    elementsPage.getChnageToImerial(),
+    elementsPage.getBackToDashboardElementclick(),
+    elementsPage.getWaitforCurrentlocation(),
+    cy.screenshot('Metrics to Imperial')
+  })
+>>>>>>> main:cypress/e2e/uiTestsuite.cy.js
 })
 
 
