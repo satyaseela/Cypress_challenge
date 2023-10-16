@@ -22,6 +22,18 @@ class elementsPage {
           cy.log("Weather is: " + text);
          });
     }
+    chnageToImerial(){
+      cy.get('.buttons > :nth-child(2)').click()
+    }
+    addNewlocation(){
+      cy.window().then(function(p){
+        cy.stub(p, "prompt").returns("Delhi");
+        cy.get(':nth-child(1) > :nth-child(3) > .button').click()
+      })
+    }
+    accessMocklocation(){
+      cy.get(':nth-child(1) > [data-testid="weather-card"] > .card',).click()
+    }
     cloudValueElement() {
       cy.get('.is-size-1')
         .invoke("text")

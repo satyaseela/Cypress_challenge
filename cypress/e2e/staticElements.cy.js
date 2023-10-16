@@ -8,7 +8,7 @@ describe("Weather Forcast Testsuit ", () => {
     staticElementsPage.verifyDashboard();
     staticElementsPage.verifySettings();
   }),
-  it("Verifys static elements in Satings page", () => {
+  it("Verifys static elements in Setings page", () => {
     cy.visit(Cypress.env('url')+"/Settings/");
     staticElementsPage.verifySettingsElement2();
     staticElementsPage.verifyBackToDashboard();
@@ -34,8 +34,8 @@ function mockLocation(latitude, longitude) {
   };
 }
   it('Geo Location Test', () => {
-    cy.visit(Cypress.env('url'), mockLocation(60.1674881,24.9427473)),
-    cy.get(':nth-child(1) > [data-testid="weather-card"] > .card',).click(),
+    cy.visit(Cypress.env('url'), mockLocation(40.7127281,-74.0060152)),
+    elementsPage.accessMocklocation(),
     elementsPage.mockCityName(),
     elementsPage.cloudElement(),
     elementsPage.cloudValueElement(),
@@ -45,19 +45,13 @@ function mockLocation(latitude, longitude) {
   it("Add new geographical locations", () => {
     cy.visit(Cypress.env('url')),
     elementsPage.settingsElement(),
-      cy.window().then(function(p){
-        cy.stub(p, "prompt").returns("Delhi");
-        cy.get(':nth-child(1) > :nth-child(3) > .button').click()
-      })
+    elementsPage.addNewlocation(),
     cy.get('.has-text-centered > a').click()
   })
-  it("Remove a geographical location", ()=>{
+  it("Remove a geographical location and Metrics Change to Imperial", ()=>{
     cy.visit(Cypress.env('url')),
     elementsPage.settingsElement(),
-    cy.get('.buttons > :nth-child(2)').click(),
-    cy.get('.has-text-centered > a').click(),
-    elementsPage.backToDashboardElementclick(),
-    //elementsPage.settingsElement(),
+    elementsPage.chnageToImerial(),
     elementsPage.deletecLocation() // Deleting a city from the list
 })
 })
