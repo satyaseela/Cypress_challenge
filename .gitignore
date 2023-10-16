@@ -1,3 +1,7 @@
 node_modules
 build
+<<<<<<< HEAD
 cypress/screenshots/*
+=======
+cypress/screenshots/*
+>>>>>>> 8376ba6e82f808481675627bab5d355b2476b295
