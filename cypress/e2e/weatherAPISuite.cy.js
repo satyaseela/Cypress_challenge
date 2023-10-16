@@ -1,6 +1,6 @@
 //API testing, write a regression suite with validations for 3-4 cities.
 describe('Weather Forecast API Test Regression Test', () => {
-    it('Should get weather data for 3 cities', () => {
+    it('Should get weather data for 4 cities', () => {
       const cities = ['Cairo', 'Masco', 'Delhi', 'Oslo' ];
       const apiKey = '300532edc3ad967d8a7995da10cb7d9d'; // Replace with your OpenWeatherMap API key
       cities.forEach((city) => {
@@ -30,6 +30,6 @@ describe('Weather Forecast API Test Regression Test', () => {
           cy.log('------------------------------------------');
           
         });
-      });
-    });
+      })
+    })
   });

@@ -1,5 +1,10 @@
 class elementsPage {
+<<<<<<< HEAD
+   
+  settingsElement() {
+=======
     getSettingsElement() {
+>>>>>>> main
       cy.get(".mt-5 > a")
         .should("be.visible")
         .click();
