@@ -49,44 +49,6 @@ function mockLocation(latitude, longitude) {
     } 
   };
 }
-<<<<<<< HEAD:cypress/e2e/staticElements.cy.js
-
-
-it('Geo Location Test', () => {
-    cy.visit(Cypress.env('url'), mockLocation(60.1674881,24.9427473)),
-    cy.get(':nth-child(1) > [data-testid="weather-card"] > .card').click(),
-    elementsPage.mockCityName(),
-    elementsPage.cloudElement(),
-    elementsPage.cloudValueElement(),
-    cy.screenshot()
-  })
-
-it('Geo Location Negative Test' , () => {
-    cy.visit(Cypress.env('url'), mockLocation(41.8933203,12.4829321)),
-    cy.get(':nth-child(1) > [data-testid="weather-card"]')
-    .should("be.visible")
-    .and('have.text','Berlin');;
-        }); 
- })
-  
- it("Add new geographical locations", () => {
-    cy.visit(Cypress.env('url')),
-    elementsPage.settingsElement()//.click(),
-      cy.window().then(function(p){
-        cy.stub(p, "prompt").returns("Delhi");
-        cy.get(':nth-child(1) > :nth-child(3) > .button').click()
-      })
-    cy.get('.has-text-centered > a').click()
-  })
-
-  it("Remove a geographical location", ()=>{
-    cy.visit(Cypress.env('url')),
-    elementsPage.settingsElement(),
-    cy.get('.buttons > :nth-child(2)').click(),
-    cy.get('.has-text-centered > a').click(),
-    elementsPage.backToDashboardElementclick(),
-    elementsPage.deletecLocation() 
-=======
   it('Geo Location Test', () => {
     cy.visit(Cypress.env('url'), mockLocation(40.7127281,-74.0060152)), //Giving Mocklocation coordinates
     elementsPage.getAccessMocklocation(),
@@ -96,6 +58,13 @@ it('Geo Location Negative Test' , () => {
     //cy.wait(1000);  
     cy.screenshot('Mock location')
   }),
+  it('Geo Location Negative Test' , () => {
+    cy.visit(Cypress.env('url'), mockLocation(41.8933203,12.4829321)),
+    cy.get(':nth-child(1) > [data-testid="weather-card"]')
+    .should("be.visible")
+    .and('have.text','Berlin');;
+        }); 
+ })
   it("Add new geographical locations", () => {
     cy.visit(Cypress.env('url')),
     elementsPage.getSettingsElement(),
@@ -119,7 +88,6 @@ it('Geo Location Negative Test' , () => {
     elementsPage.getWaitforCurrentlocation(),
     cy.screenshot('Metrics to Imperial')
   })
->>>>>>> main:cypress/e2e/uiTestsuite.cy.js
 })
 
 
