@@ -12,7 +12,7 @@
 -----------------------------------
 # Cypress JavaScript End-to-End Testing Example Project
 
-This is an example project for performing end-to-end testing using Cypress and JavaScript. It demonstrates how to organize test files and perform testing for both UI and API aspects of your application.
+This is an example project for performing end-to-end testing using Cypress and JavaScript. It demonstrates how to organize test files and perform testing for both UI and API aspects of application.
 
 ## Installation
 
@@ -22,10 +22,10 @@ To run the tests locally, you'll need to have Node.js and npm installed. Then, i
 
 The project is organized into the following directories:
 
-- **cypress/e2e**: Contains UI regression test files.
-- **cypress/e2e/uiRegression_suit**: Specific test suite for UI regression testing.
-- **cypress/e2e/API**: Directory for API testing.
-- **cypress/e2e/uiRegression_Testsuit**: Test suite for UI regression testing.
+- **cypress/e2e**: Contains UI test and API tests
+- **cypress/e2e/uiTestsuite.cy.js: Specific for UI regression testing.
+- **cypress/e2e/weatherAPISuite.cy.js**:Specific for API testing
+
 
 ## UI Regression Test Suite
 
@@ -34,14 +34,18 @@ The project is organized into the following directories:
 The UI regression test suite covers the following scenarios:
 
 - Verification of static elements on the application pages.
-- Validation of the application's ability to use the current location.
 - Mocking a location and validating the current weather, temperature, sunrise, and sunset times.
 - Adding and removing new geographical locations.
 - Verifying preferred units by switching the units.
 
+## API Testing
+### Overview
+  For API testing followed the OpenWeatherMap API to fetch and present real-time weather data based on a locations and validated their responses.
+
 ### Running Tests
 
-To run the UI regression tests, use the following command:
-
-```bash
+To run the tests, use the following command:
 npx cypress open
+
+To run the tests in diffrent browsers use the following command:
+npx cypress run --spec cypress\e2e\uiTestsuite.cy.js --browser browsername
