@@ -30,6 +30,7 @@ The project is organized into the following directories:
 - **cypress/e2e**: Contains UI test and API tests
 - **cypress/e2e/uiTestsuite.cy.js**: Specific for UI regression testing.
 - **cypress/e2e/weatherAPISuite.cy.js**:Specific for API testing
+- **cypress\Pages** : placed all locators in the applications
 
 ## UI Regression Test Suite
 ### Overview
