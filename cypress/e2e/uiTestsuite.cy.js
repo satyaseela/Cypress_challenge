@@ -64,7 +64,7 @@ function mockLocation(latitude, longitude) {
     .should("be.visible")
     .and('have.text','Berlin');;
         }); 
- })
+ 
   it("Add new geographical locations", () => {
     cy.visit(Cypress.env('url')),
     elementsPage.getSettingsElement(),
