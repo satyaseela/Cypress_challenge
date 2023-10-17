@@ -23,7 +23,7 @@ To run the tests locally, you'll need to have Node.js and npm installed. Then, i
 The project is organized into the following directories:
 
 - **cypress/e2e**: Contains UI test and API tests
-- **cypress/e2e/uiTestsuite.cy.js: Specific for UI regression testing.
+- **cypress/e2e/uiTestsuite.cy.js**: Specific for UI regression testing.
 - **cypress/e2e/weatherAPISuite.cy.js**:Specific for API testing
 
 
